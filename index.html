@@ -12,6 +12,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Germania+One&family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
+  <!-- FontAwesome kit -->
+  <script src="https://kit.fontawesome.com/74b90d7982.js" crossorigin="anonymous"></script>
+
   <style>
     :root {
       --fg: white;
@@ -76,32 +79,63 @@
       font-weight: normal;
       font-size: 7rem;
 
-      padding: 0 1rem;
+      margin: 0 1rem;
+    }
+
+    h3 {
+      font-size: 2rem;
+      font-weight: normal;
+      margin-bottom: 2rem;
     }
 
     p {
-      font-size: 1.5em;
-      padding-bottom: 1em;
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+
+      margin-bottom: 1rem;
+
+      max-width: 70ch;
+    }
+    
+    a {
+      color: var(--banner-bg);
+
+      text-decoration: none;
+      
+      border-bottom: 2px;
+      border-bottom-style: solid;
+
+      padding: 2px;
     }
 
     aside p {
       font-size: 1em;
       font-weight: bold;
-      padding: 0;
+      margin: 0;
     }
 
-    @media screen and (min-width: 320px) {
+    @media screen and (max-width: 600px) {
       h1 {
         font-size: 5rem;
-        line-height: 5rem;
+        line-height: 6rem;
         margin-bottom: 2rem;
       }  
 
+      h3 {
+        margin-left: 1rem;
+        margin-right: 1rem;
+      }
+
       p {
-        font-size: 1.2rem;
+        font-size: 1rem;
+        margin: 0 1rem;
       }
     }
   </style>
+
+  <!-- GoatCounter tracker -->
+  <script data-goatcounter="https://repeated-pleasant-games.goatcounter.com/count"
+    async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
   <aside>
@@ -116,11 +150,13 @@
 
   <h1>Repeated Pleasant Games</h1>
 
-  <p>Making virtual tabletop gaming much more <em>pleasant</em>.</p>
+  <h3>Making virtual tabletop gaming much more <em>pleasant</em>.</h3>
 
-  <p><em>Coming soon!</em></p>
-
-  <script data-goatcounter="https://repeated-pleasant-games.goatcounter.com/count"
-    async src="//gc.zgo.at/count.js"></script>
+  <p>We're working on something great, but it's not ready yet. If you want to
+    know more, come check us out on <a title="Repeated Pleasant Games GitHub page"
+    href="https://github.com/repeated-pleasant-games"><i class="fa fa-github"></i>
+    &nbsp;GitHub</a>, or join the conversation on <a title="Repeated Pleasant Games Discord server invite"
+    href="https://discord.gg/RuMvr6Yyy3">
+    <i class="fab fa-discord"></i>&nbsp;Discord</a>!</p>
 </body>
 </html>
