@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="Virtual tabletop for RPGs and wargames.">
+
+  <title>Repeated Pleasant Games️</title>
+  <meta name="description" content="Making virtual tabletop gaming much more pleasant">
+
   <meta name="keywords" content="repeated, pleasant, games, virtual, tabletop, rpg, rpgs, wargames, vtt, dnd">
   <meta name="author" content="Repeated Pleasant Games">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Repeated Pleasant Games &mdash; Coming Soon!🏗️</title>
 
   <!-- Google Fonts: Lato, Germania One -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -16,120 +18,147 @@
   <script src="https://kit.fontawesome.com/74b90d7982.js" crossorigin="anonymous"></script>
 
   <style>
-    :root {
-      --fg: white;
-      --bg: #0074d9;
-      --banner-fg: #111;
-      --banner-bg: #ffdc00;
-    }
-
-    * {
-      padding: 0;
-      margin: 0;
-
+    /* Reset */
+    html {
+      z-index: 0;
+      position: relative;
       box-sizing: border-box;
 
-      position: relative;
+      margin: 0;
+      padding: 0;
     }
 
+    html *,
+    html *::before,
+    html *::after {
+      z-index: inherit;
+      position: inherit;
+      box-sizing: inherit;
+
+      margin: 0;
+      padding: 0;
+    }
+
+    p, h1, h2, h3, h4, h5, h6, li {
+      font-size: 1rem;
+    }
+
+    ol, ul {
+      list-style: none;
+    }
+
+    /* Variables */
+    :root {
+      --blue: #0074D9;
+      --yellow: #FFDC00;
+      --red: #FF4136;
+
+      --brand-primary: var(--blue);
+      --brand-secondary: var(--yellow);
+      --brand-tertiary: var(--red);
+
+      --font-logo: Germania One, Impact, sans-serif;
+      --font-heading: Germania One, Impact, sans-serif;
+      --font-body: Lato, system-ui, -apple-system, Segoe UI, sans-serif;
+
+      --r: 1.333;
+
+      --text-base: 1rem;
+      --text-md: calc(var(--r) * var(--text-base));
+      --text-lg: calc(var(--r) * var(--text-md));
+      --text-xl: calc(var(--r) * var(--text-lg));
+      --text-2x: calc(var(--r) * var(--text-xl));
+      --text-3x: calc(var(--r) * var(--text-2x));
+    }
+
+    /* Fonts */
+    .font-logo { font-family: var(--font-logo); }
+    .font-heading { font-family: var(--font-heading); }
+    .font-body { font-family: var(--font-body); }
+
+    .font-bold { font-weight: 700; }
+
+    /* Text sizes */
+    .text-base { font-size: var(--text-base); }
+    .text-md { font-size: var(--text-md); }
+    .text-lg { font-size: var(--text-lg); }
+    .text-xl { font-size: var(--text-xl); }
+    .text-2x { font-size: var(--text-2x); }
+    .text-3x { font-size: var(--text-3x); }
+
+    /* Text alignment */
+    .text-center { text-align: center; }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: max-content;
+      gap: var(--text-base);
+
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .span-2 {
+      grid-column: span 2 / span 2;
+    }
+
+    .span-6 {
+      grid-column: span 6 / span 6;
+    }
+
+    .span-10 {
+      grid-column: span 10 / span 10;
+    }
+
+    .span-12 {
+      grid-column: span 12 / span 12;
+    }
+
+    .column-2 {
+      grid-column-start: 2;
+    }
+
+    .column-4 {
+      grid-column-start: 4;
+    }
+
+    .column-6 {
+      grid-column-start: 6;
+    }
+
+    /* Global */
     html {
-      font-size: clamp(0.5rem, 4vw, 1rem);
+      font-size: 100%;
+      background-color: var(--brand-primary);
+      color: white;
     }
 
     body {
-      color: var(--fg);
-      background: var(--bg);
+      font-family: var(--font-body);
+    }
 
-      font-family: Lato, system-ui, sans-serif;
+    /* Local */
+    #logo-type {
+      place-self: center;
+      aspect-ratio: 1 / 1;
+      max-width: var(--text-3x);
 
-      width: 100vw;
-      height: 100vh;
+      fill: currentColor;
+    }
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-flow: column;
-
+    nav {
       text-align: center;
     }
 
-    aside {
-      position: fixed;
-      top: 0;
-      left: 0;
-
-      width: 100vw;
-      height: 3rem;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      color: var(--banner-fg);
-      background: var(--banner-bg);
+    nav > ul > li {
+      display: inline-block;
+      font-size: var(--text-md);
     }
 
-    svg {
-      font-family: Germania One, fantasy;
-      fill: var(--fg);
-    }
-
-    h1 {
-      font-family: 'Germania One', fantasy;
-      font-weight: normal;
-      font-size: 7rem;
-
-      margin: 0 1rem;
-    }
-
-    h3 {
-      font-size: 2rem;
-      font-weight: normal;
-      margin-bottom: 2rem;
-    }
-
-    p {
-      font-size: 1.2rem;
-      line-height: 1.6rem;
-
-      margin-bottom: 1rem;
-
-      max-width: 70ch;
-    }
-    
-    a {
-      color: var(--banner-bg);
-
-      text-decoration: none;
-      
-      border-bottom: 2px;
-      border-bottom-style: solid;
-
-      padding: 2px;
-    }
-
-    aside p {
-      font-size: 1em;
-      font-weight: bold;
-      margin: 0;
-    }
-
-    @media screen and (max-width: 600px) {
-      h1 {
-        font-size: 5rem;
-        line-height: 6rem;
-        margin-bottom: 2rem;
-      }  
-
-      h3 {
-        margin-left: 1rem;
-        margin-right: 1rem;
-      }
-
-      p {
-        font-size: 1rem;
-        margin: 0 1rem;
-      }
+    nav > ul > li + li {
+      margin-left: var(--text-base);
     }
   </style>
 
@@ -138,25 +167,132 @@
     async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
-  <aside>
-    <p>🚧 Currently under construction! 🚧</p>
-  </aside>
+  <main class="grid">
+    <svg
+      id="logo-type"
+      role="img"
+      aria-label="The initials for Repeated Pleasant Games spelt from the top left to bottom right."
+      viewbox="0,0 100,100"
+      class="font-logo text-3x column-6 span-2"
+    >
+      <title>R P G</title>
+      <desc>
+        The initials for Repeated Pleasant Games spelt from the top left to bottom right.
+      </desc>
 
-  <svg id="logo-type" viewbox="20,0 30,40" width="7em">
-    <text x="20" y="20">R</text>
-    <text x="31" y="27">P</text>
-    <text x="40" y="33">G</text>
-  </svg>
+      <text x="20" y="50" text-anchor="middle">R</text>
+      <text x="56" y="75" text-anchor="middle">P</text>
+      <text x="82" y="100" text-anchor="middle">G</text>
+    </svg>
 
-  <h1>Repeated Pleasant Games</h1>
+    <br/>
 
-  <h3>Making virtual tabletop gaming much more <em>pleasant</em>.</h3>
+    <h1 class="font-heading text-3x text-center span-12">
+      Repeated Pleasant Games
+    </h1>
 
-  <p>We're working on something great, but it's not ready yet. If you want to
-    know more, come check us out on <a title="Repeated Pleasant Games GitHub page"
-    href="https://github.com/repeated-pleasant-games"><i class="fa fa-github"></i>
-    &nbsp;GitHub</a>, or join the conversation on <a title="Repeated Pleasant Games Discord server invite"
-    href="https://discord.gg/RuMvr6Yyy3">
-    <i class="fab fa-discord"></i>&nbsp;Discord</a>!</p>
+    <h2 class="font-heading text-lg text-center column-2 span-10">
+      Making virtual tabletop gaming much more <em>pleasant</em>.
+    </h2>
+
+    <br/>
+
+    <p class="text-md text-center column-2 span-10">
+      We are a free and open-source project striving to bring back the excitement
+      and fun in virtual tabletop gaming while making it more accessible for everyone.
+    </p>
+
+    <br/>
+
+    <nav
+      role="navigation"
+      aria-label="Social media quick links"
+      class="column-4 span-6"
+    >
+      <ul role="list">
+        <li role="listitem">
+          <a
+            role="link"
+            aria-label="Repeated Pleasant Games Twitter page"
+            href="https://twitter.com/@RepeatedGames"
+            target="_blank"
+            rel="nofollow noopener noreferrer external"
+          >
+            <i
+              role="img"
+              aria-label="Twitter logo"
+              class="fab fa-twitter"
+            >
+            </i>
+          </a>
+        </li>
+        <li role="listitem">
+          <a
+            role="link"
+            aria-label="Repeated Pleasant Games Discord server invite link"
+            href="https://discord.gg/HmjhZggq8U"
+            target="_blank"
+            rel="nofollow noopener noreferrer external"
+          >
+            <i
+              role="img"
+              aria-label="Discord logo"
+              class="fab fa-discord"
+            >
+            </i>
+          </a>
+        </li>
+        <li role="listitem">
+          <a
+            role="link"
+            aria-label="Repeated Pleasant Games Medium publication"
+            href="https://medium.com/repeated-pleasant-games"
+            target="_blank"
+            rel="nofollow noopener noreferrer external"
+          >
+            <i
+              role="img"
+              aria-label="Medium logo"
+              class="fab fa-medium"
+            >
+            </i>
+          </a>
+        </li>
+        <li role="listitem">
+          <a
+            role="link"
+            aria-label="Repeated Pleasant Games DEV Community organization page"
+            href="https://dev.to/rpg"
+            target="_blank"
+            rel="nofollow noopener noreferrer external"
+          >
+            <i
+              role="img"
+              aria-label="DEV Community logo"
+              class="fab fa-dev"
+            >
+            </i>
+          </a>
+        </li>
+        <li role="listitem">
+          <a
+            role="link"
+            aria-label="Repeated Pleasant Games GitHub organization page"
+            href="https://github.com/repeated-pleasant-games"
+            target="_blank"
+            rel="nofollow noopener noreferrer external"
+          >
+            <i
+              role="img"
+              aria-label="GitHub logo"
+              class="fab fa-github"
+            >
+            </i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  <main>
+
 </body>
 </html>
