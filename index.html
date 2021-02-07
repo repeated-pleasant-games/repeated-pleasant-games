@@ -62,7 +62,9 @@
       --font-body: Lato, system-ui, -apple-system, Segoe UI, sans-serif;
 
       --r: 1.333;
-
+      
+      --text-xs: calc(var(--text-sm) / var(--r));
+      --text-sm: calc(var(--text-base) / var(--r));
       --text-base: 1rem;
       --text-md: calc(var(--r) * var(--text-base));
       --text-lg: calc(var(--r) * var(--text-md));
@@ -70,6 +72,17 @@
       --text-2x: calc(var(--r) * var(--text-xl));
       --text-3x: calc(var(--r) * var(--text-2x));
     }
+
+    /* Spacing */
+    .m-sm { margin: var(--text-sm); }
+    .m-base { margin: var(--text-base); }
+    .m-md { margin: var(--text-md); }
+
+    .mt-xs { margin-top: var(--text-xs); }
+    .mt-sm { margin-top: var(--text-sm); }
+    .mt-base { margin-top: var(--text-base); }
+    .mt-md { margin-top: var(--text-md); }
+    .mt-lg { margin-top: var(--text-lg); }
 
     /* Fonts */
     .font-logo { font-family: var(--font-logo); }
@@ -79,6 +92,7 @@
     .font-bold { font-weight: 700; }
 
     /* Text sizes */
+    .text-sm { font-size: var(--text-sm); }
     .text-base { font-size: var(--text-base); }
     .text-md { font-size: var(--text-md); }
     .text-lg { font-size: var(--text-lg); }
@@ -94,10 +108,7 @@
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       grid-auto-rows: max-content;
-      gap: var(--text-base);
-
-      max-width: 960px;
-      margin: 0 auto;
+      column-gap: var(--text-base);
     }
 
     .span-2 {
@@ -137,6 +148,26 @@
 
     body {
       font-family: var(--font-body);
+
+      width: 100%;
+      height: 100vh;
+
+      display: grid;
+      grid-template-columns: 1fr minmax(min-content, 960px) 1fr;
+      grid-template-rows: repeat(3, minmax(max-content, 1fr));
+      row-gap: var(--text-base);
+
+      justify-items: center;
+    }
+
+    body * {
+      grid-column: 2;
+      grid-row: span 1;
+    }
+
+    body header {
+      height: max-content;
+      align-self: center;
     }
 
     /* Local */
@@ -146,6 +177,8 @@
       max-width: var(--text-3x);
 
       fill: currentColor;
+
+      align-self: center;
     }
 
     nav {
@@ -154,20 +187,37 @@
 
     nav > ul > li {
       display: inline-block;
-      font-size: var(--text-md);
+      font-size: inherit;
     }
 
     nav > ul > li + li {
       margin-left: var(--text-base);
     }
+
+    a:any-link {
+      color: var(--brand-secondary);
+      text-decoration: none;
+    }
+
+    a:any-link i {
+      color: white;
+
+      transition: all 50ms ease-in-out;
+    }
+
+    a:any-link:hover i {
+      color: var(--brand-secondary);
+      text-shadow: 0.25rem 0.25rem var(--brand-tertiary);
+      transform: translate(-0.25rem, -0.25rem);
+    }
   </style>
 
   <!-- GoatCounter tracker -->
   <script data-goatcounter="https://repeated-pleasant-games.goatcounter.com/count"
-    async src="//gc.zgo.at/count.js"></script>
+    async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
-  <main class="grid">
+  <header class="grid">
     <svg
       id="logo-type"
       role="img"
@@ -184,30 +234,34 @@
       <text x="56" y="75" text-anchor="middle">P</text>
       <text x="82" y="100" text-anchor="middle">G</text>
     </svg>
+  </header>
 
-    <br/>
-
+  <main class="grid">
     <h1 class="font-heading text-3x text-center span-12">
       Repeated Pleasant Games
     </h1>
 
-    <h2 class="font-heading text-lg text-center column-2 span-10">
+    <h2 class="font-heading text-lg text-center column-2 span-10 mt-xs">
       Making virtual tabletop gaming much more <em>pleasant</em>.
     </h2>
 
     <br/>
 
-    <p class="text-md text-center column-2 span-10">
+    <p class="text-md text-center column-2 span-10 mt-lg">
       We are a free and open-source project striving to bring back the excitement
       and fun in virtual tabletop gaming while making it more accessible for everyone.
     </p>
+  </main>
 
+  <footer class="grid">
+    <p class="text-center column-2 span-10">
+      Want to know more? Come check us out:
+    </p>
     <br/>
-
     <nav
       role="navigation"
       aria-label="Social media quick links"
-      class="column-4 span-6"
+      class="text-center span-12 text-lg mt-xs"
     >
       <ul role="list">
         <li role="listitem">
@@ -292,7 +346,6 @@
         </li>
       </ul>
     </nav>
-  <main>
-
+  </footer>
 </body>
 </html>
