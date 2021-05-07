@@ -30,4 +30,4 @@ jobs:
           SSH_HOST: ${{ secrets.DEPLOY_SSH_HOST }}
 
       - name: Checkout repo
-        run: ssh deploy 'cd repeatedpleasant.games && git fetch && git reset --hard origin/master'
+        run: ssh deploy 'cd /srv/www/repeatedpleasant.games && git fetch && git reset --hard origin/master'
