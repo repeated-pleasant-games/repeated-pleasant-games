@@ -1,6 +1,7 @@
 name: Deploy site
-on: [push, pull_request]
-  branches: master
+on:
+  push:
+    branches: master
 
 jobs:
   deploy:
